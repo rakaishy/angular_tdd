@@ -1,23 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
-import { products } from '../products';
+import { Product, products } from '../products';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent {
-  products = products;
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
-  share() {
+  private products: Product[] = products;
+
+  public dataSource = new MatTableDataSource<Product>(this.products);
+  public displayedColumns: string[] = ['name', 'description', 'price', 'add'];
+
+  public constructor(
+    private productService: ProductService) {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  public share() {
     window.alert('The product has been shared!');
   }
+
+  public addProduct(product: Product, amount: number): void {
+    return;
+  }
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
