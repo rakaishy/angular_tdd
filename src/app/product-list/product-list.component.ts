@@ -1,8 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { ELEMENT_DATA, Product, PRODUCTS_DATA } from '../products';
+import { Product, PRODUCTS_DATA } from '../products';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class ProductListComponent {
     'amount',
     'add',
   ];
-  public constructor() {
+  public constructor(private productService: ProductService) {
     this.dataSource = new MatTableDataSource<Product>(PRODUCTS_DATA);
     this.dataSource.paginator = this.paginator;
   }

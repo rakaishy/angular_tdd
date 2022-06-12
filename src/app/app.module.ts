@@ -23,7 +23,7 @@ import { ProductService } from './services/product.service';
     MaterialExampleModule,
     RouterModule.forRoot([
       { path: '', component: ProductListComponent },
-      { path: 'checkoutt', component: ProductCartComponent },
+      { path: 'checkout', component: ProductCartComponent },
     ]),
     BrowserAnimationsModule,
   ],

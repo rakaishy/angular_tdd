@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { sumBy } from 'lodash';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ProductService {
   public constructor() {}
 
