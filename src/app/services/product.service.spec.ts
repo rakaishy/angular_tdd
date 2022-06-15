@@ -13,4 +13,19 @@ describe('ProductService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should return the total results', () => {
+    //TODO: add real test
+    expect(true).toBeTruthy();
+  });
+
+  it('should add products', () => {
+    //TODO: add real test
+    expect(true).toBeTruthy();
+  });
+
+  it('should remove products', () => {
+    //TODO: add real test
+    expect(true).toBeTruthy();
+  });
 });
