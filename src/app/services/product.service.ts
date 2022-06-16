@@ -1,23 +1,32 @@
 import { Injectable } from '@angular/core';
-import { sumBy } from 'lodash';
+import { multiply, remove, sumBy, without } from 'lodash';
 import { Product } from '../products';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  private selectedProducts$: Observable<Product[]> = new Observable();
+  private _selectedProducts: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
   public constructor() {}
 
   // NOT TO DO EXAMPLE
-  public getTotal(selectedProducts: { id: string; price: number }[]): number {
+  public getTotal(
+    selectedProducts: { amount: number; price: number }[]
+  ): number {
     return sumBy(selectedProducts, (product) => {
-      return product.price;
+      return multiply(product.price, product.amount);
     });
   }
 
   // TODO EXAMPLES
-  public addProducts(products: Product[]): void {}
+  public addProduct(product: Product): void {
+   // implement me!
+  }
 
-  public removeProducts(products: Product[]): void { }
-
+  public removeProduct(product: Product): void {
+    // implement me!
+  }
+  
+  public get selectedProducts(): Observable<Product[]> {
+    return this._selectedProducts.asObservable();
+  }
 }
